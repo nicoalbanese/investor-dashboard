@@ -23,8 +23,9 @@ export default function Home() {
 
   const fetchInvestorInfo = async (email) => {
     const res = await fetch(`/api/investor/${email}`)
-    // const res = await fetch(`/api/investor/rakesh@ascensionventures.com`)
+    // const res = await fetch(`/api/investor/carlotta.riganti@gmail.com`)
     const data = await res.json();
+    console.log(data)
     return data;
   }
   return (
@@ -35,7 +36,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="h-auto w-full pt-32 overflow-auto">
-        {profile ? (
+        {profile && profile.investmentData.status === "ok" ? (
           <div>
             <h1 className="font-bold text-3xl mb-24">Welcome back, {profile.investmentData.investorDetails[0].name}!</h1>
             <div id="fund-investments">
@@ -99,6 +100,7 @@ export default function Home() {
 
         ) : (<div id="sign-in-area">
           <h1 className="text-4xl font-bold">Ascension Investor Portal</h1>
+          {(profile && profile.investmentData) && <div className="mt-4 bold uppercase">{profile.investmentData.status}</div>}
         </div>)
         }
       </main >
