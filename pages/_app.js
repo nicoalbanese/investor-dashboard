@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
   }
   return (
     <div className="h-screen bg-gray-700 text-gray-100">
-      <div id="outer-container" className="p-10 max-w-4xl mx-auto">
+      <div id="outer-container" className="p-10 max-w-5xl mx-auto">
         <nav className=" py-4 w-full">
           <Link href="/">
             <a className="text-gray-300 mr-4">Home</a>
