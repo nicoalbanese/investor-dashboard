@@ -3,12 +3,17 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../client'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
+import { AppWrapper } from "../context/state.js"
+
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
+
   const [authenticatedState, setAuthenticatedState] = useState('not-authenticated')
+
   useEffect(() => {
     /* fires when a user signs in or out */
+
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       handleAuthChange(event, session)
       if (event === 'SIGNED_IN') {
@@ -41,9 +46,11 @@ function MyApp({ Component, pageProps }) {
     })
   }
   return (
-    <Layout authenticatedState={authenticatedState}>
-      <Component {...pageProps} />
-    </Layout>
+    <AppWrapper>
+      <Layout authenticatedState={authenticatedState}>
+        <Component {...pageProps} />
+      </Layout>
+    </AppWrapper>
   )
 }
 

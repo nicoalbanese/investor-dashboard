@@ -9,8 +9,11 @@ const Navbar = ({ authenticatedState }) => {
             {/* <Link href="/profile">
                 <a className="text-gray-300 mr-4">Profile</a>
             </Link> */}
-            <Link href="/portfolio">
-                <a className="text-gray-300 mr-4">Portfolio</a>
+            <Link href="/performance">
+                <a className="text-gray-300 mr-4">Performance</a>
+            </Link>
+            <Link href="/explore">
+                <a className="text-gray-300 mr-4">Explore</a>
             </Link>
             {
                 authenticatedState === 'not-authenticated' && (
