@@ -79,7 +79,7 @@ const UnderlyingInvestment = ({ investment }) => {
                 <div className="flex items-center">
                     <div className="">
                         <div className="text-sm font-medium text-gray-900">{investment.name}</div>
-                        <a href={investment.website} target="_blank"><div className="text-sm text-gray-500 hover:opacity-30">{investment.website}</div></a>
+                        <a href={investment.website} target="_blank" rel="noreferrer"><div className="text-sm text-gray-500 hover:opacity-30">{investment.website}</div></a>
                     </div>
                 </div>
             </td>

@@ -37,8 +37,8 @@ export function AppWrapper({ children }) {
     }
 
     const fetchInvestorInfo = async (email) => {
-        // const res = await fetch(`/api/investor/${email}`)
-        const res = await fetch(`/api/investor/carlotta.riganti@gmail.com`)
+        const res = await fetch(`/api/investor/${email}`)
+        // const res = await fetch(`/api/investor/carlotta.riganti@gmail.com`)
         // const res = await fetch(`/api/investor/rakesh@ascensionventures.com`)
         const data = await res.json();
         // console.log(data)
