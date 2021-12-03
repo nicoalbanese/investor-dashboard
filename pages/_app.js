@@ -1,8 +1,8 @@
 import 'tailwindcss/tailwind.css'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { supabase } from '../client'
 import { useRouter } from 'next/router'
+import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       handleAuthChange(event, session)
       if (event === 'SIGNED_IN') {
         setAuthenticatedState('authenticated')
-        router.push('/profile')
+        router.push('/')
       }
       if (event === 'SIGNED_OUT') {
         setAuthenticatedState('not-authenticated')
@@ -41,29 +41,9 @@ function MyApp({ Component, pageProps }) {
     })
   }
   return (
-    <div className="h-screen bg-gray-700 text-gray-100 overflow-auto">
-      <div id="outer-container" className="p-10 max-w-5xl mx-auto">
-        <nav className=" py-4 w-full">
-          <Link href="/">
-            <a className="text-gray-300 mr-4">Home</a>
-          </Link>
-          <Link href="/profile">
-            <a className="text-gray-300 mr-4">Profile</a>
-          </Link>
-          {
-            authenticatedState === 'not-authenticated' && (
-              <Link href="/sign-in">
-                <a className="text-gray-300 mr-4">Sign In</a>
-              </Link>
-            )
-          }
-          {/* <Link href="/protected">
-            <a className="text-gray-300 mr-4">Protected</a>
-          </Link> */}
-        </nav>
-        <Component {...pageProps} />
-      </div>
-    </div>
+    <Layout authenticatedState={authenticatedState}>
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 
