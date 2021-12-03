@@ -8,7 +8,27 @@ import { useAppContext } from '../context/state'
 export default function Home() {
 
   const { sharedState } = useAppContext();
+  const [greeting, setGreeting] = useState("");
+  const investorDetails = sharedState.airtableData.investorDetails;
 
+  useEffect(() => {
+    pickGreeting();
+  }, [])
+
+  const pickGreeting = () => {
+    var d = new Date();
+    var time = d.getHours();
+
+    if (time < 12) {
+      setGreeting("morning")
+    }
+    if (time > 12 && time < 17) {
+      setGreeting("afternoon")
+    }
+    if (time > 17) {
+      setGreeting("evening")
+    }
+  }
 
   return (
     <div className="">
@@ -18,9 +38,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <h1 className="text-3xl font-bold">Ascension Investor Portal</h1>
-        <h3>Welcome {sharedState && sharedState.name}</h3>
-        <button onClick={() => console.log(sharedState)}>click to change</button>
+        {sharedState.loading ? <div>loading...</div> : <>
+          <h1 className="text-3xl font-bold my-4">Good {greeting}, {investorDetails[0].name}!</h1>
+          <h3 className="my-2 text-xl font-">Welcome to your Ascension Investment Portal</h3>
+          {/* <button onClick={() => console.log(investorDetails)}>click to change</button> */}
+          </>}
       </main >
     </div >
   )

@@ -78,21 +78,21 @@ const UnderlyingInvestment = ({ investment }) => {
             <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                     <div className="">
-                        <div className="text-sm font-medium text-gray-900">{investment.name}</div>
-                        <a href={investment.website} target="_blank" rel="noreferrer"><div className="text-sm text-gray-500 hover:opacity-30">{investment.website}</div></a>
+                        <div className="text-sm font-medium text-gray-900 hover:opacity-30"><a target="_blank" rel="noreferrer" href={investment.website} >{investment.name}</a></div>
+                        {/* <a href={investment.website} target="_blank" rel="noreferrer"><div className="text-sm text-gray-500 hover:opacity-30">{investment.website}</div></a> */}
                     </div>
                 </div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
                 <div className="text-sm text-gray-900">{(investment.date)}</div>
-                <div className="text-sm text-gray-500">{investment.department}</div>
+                {/* <div className="text-sm text-gray-500">{investment.invested}</div> */}
             </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">£{(investment.invested).toLocaleString()}</td>
             <td className="px-6 py-4 whitespace-nowrap">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
+                    {investment.status}
                 </span>
             </td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{investment.role}</td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <a href="#" className="text-a-blue hover:opacity-50">
                     Edit
@@ -124,11 +124,13 @@ const FundInvestment = ({ investment }) => {
                         Deployed
                     </span>}
             </td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{investment.role}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" className="text-a-blue hover:opacity-50">
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{investment.balanceToDeploy > 200 ? `£${(investment.balanceToDeploy).toLocaleString()}` : '£0'}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-right text-sm ">
+                {/* <a href="#" className="text-a-blue hover:opacity-50">
                     Edit
-                </a>
+                </a> */}
+                <div className="text-gray-500">
+                    {investment.liveInvestments}</div>
             </td>
         </tr>
     </>)

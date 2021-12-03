@@ -40,6 +40,7 @@ export function AppWrapper({ children }) {
         const res = await fetch(`/api/investor/${email}`)
         // const res = await fetch(`/api/investor/carlotta.riganti@gmail.com`)
         // const res = await fetch(`/api/investor/rakesh@ascensionventures.com`)
+        // const res = await fetch(`/api/investor/jean@ascensionventures.com`)
         const data = await res.json();
         // console.log(data)
         return data;

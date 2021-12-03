@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { supabase } from '../client'
 
-import Image from "next/image"
+// import Image from "next/image"
 
 export default function SignIn() {
     const [email, setEmail] = useState('')
@@ -12,7 +12,7 @@ export default function SignIn() {
             email
         })
         if (error) {
-            console.log({ error })
+            console.log({ error, message: "Here" })
         } else {
             setSubmitted(true)
         }
