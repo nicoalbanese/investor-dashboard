@@ -1,5 +1,6 @@
 import InvestmentTable from "../components/InvestmentTable"
 import { useAppContext } from "../context/state"
+import StatSection from "../components/statSection"
 
 const fundTableHeaders = [
     { title: "Name", id: 0 },
@@ -16,14 +17,24 @@ const portfolioTableHeaders = [
     { title: "", id: 4 },
 ]
 
+// const stats = [
+//     { number: 50, title: "portfolio companies" },
+//     { number: 50000, title: "amount invested" },
+//     { number: 5, title: "multiple" }
+// ]
+
 const Performance = () => {
     let { sharedState } = useAppContext();
     let { fundInvestments } = sharedState.airtableData;
     let { portfolio } = sharedState.airtableData;
+
     return (
         <div>
             {!sharedState.loading ?
                 <>
+
+                    <h1 className="text-3xl font-extrabold mt-8 mb-4">Fund Investments</h1>
+                    <StatSection />
                     <h1 className="text-3xl font-extrabold mt-8 mb-4">Fund Investments</h1>
                     <InvestmentTable headers={fundTableHeaders} type="fund" investments={fundInvestments} />
                     <h1 className="text-3xl font-extrabold mt-8 mb-4">Your Portfolio</h1>

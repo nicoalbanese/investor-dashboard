@@ -3,7 +3,7 @@ import { supabase } from "../client"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 
-import { useAppContext } from '../context/state'
+import { useAppContext, AppWrapper } from '../context/state'
 
 export default function Home() {
 
@@ -13,6 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     pickGreeting();
+    console.log(AppWrapper)
   }, [])
 
   const pickGreeting = () => {
@@ -42,7 +43,7 @@ export default function Home() {
           <h1 className="text-3xl font-bold my-4">Good {greeting}, {investorDetails[0].name}!</h1>
           <h3 className="my-2 text-xl font-">Welcome to your Ascension Investment Portal</h3>
           {/* <button onClick={() => console.log(investorDetails)}>click to change</button> */}
-          </>}
+        </>}
       </main >
     </div >
   )
