@@ -1,10 +1,10 @@
 import Stat from "./stat"
 import { useAppContext } from "../context/state"
 
-const statSection = ({ stats }) => {
+const StatSection = ({ stats }) => {
 
     const { sharedState } = useAppContext();
-    const investorDetails = sharedState.investorDetails;
+    // const investorDetails = sharedState.investorDetails;
 
     console.log(sharedState.airtableData.investorDetails)
     return (
@@ -16,4 +16,4 @@ const statSection = ({ stats }) => {
     )
 }
 
-export default statSection
+export default StatSection
